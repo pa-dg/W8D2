@@ -1,28 +1,31 @@
 Array.prototype.myEach = function(callback) {
-    for (let i = 0; i < this.length; i++) {
+    for (let i = 0; i < this.length; i++) { // i = 0; this[0] = 1
         callback(this[i]);
     }
 }
 
-// function logElement(el) {
-//     console.log(el);
-// }
+function timesTwo(n) {
+    return n * 2;
+}
 
-// const arr = [1, 2, 3];
+function logElement(el) {
+    console.log(el);
+}
 
-// arr.myEach(logElement);
+const arr = [1, 2, 3];
+
+arr.myEach(logElement);
 
  
+// [1, 2, 3].myMap(doubleElement);
 Array.prototype.myMap = function(callback) {
     const result = [];
     
-    // function(callback) {
-    //     result.push(this.myEach(callback));
-    //     return result;
-    // }
-    this.myEach(function(el) {
-        result.push(callback(el))
-    })
+    function myAnonFunc(el) {
+        result.push(callback(el));
+    };
+    
+    this.myEach(myAnonFunc);
     return result;
 }
 
@@ -48,7 +51,7 @@ function inject(acc, el) {
     return acc + el;
 }
 
-const arr = [1, 2, 3];
+// const arr = [1, 2, 3];
 
-console.log(arr.myReduce(inject))
+// console.log(arr.myReduce(inject))
 
